@@ -1,0 +1,35 @@
+name: Build and Deploy
+on:
+  push:
+    branches:
+      - main
+permissions:
+  contents: write
+jobs:
+  build-and-deploy:
+    concurrency: ci-${{ github.ref }} # Recommended if you intend to make multiple deployments in quick succession.
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v3
+
+      - name: Deploy Dependencies 🔧
+        run: |
+          wget -O - https://github.com/mmarkdown/mmark/releases/download/v2.2.25/mmark_2.2.25_linux_amd64.tgz | tar -zxv
+          mv mmark /usr/local/bin/mmark
+          apt-get -y install xml2rfc
+
+      - name: Compile specifications 🔧
+        run: |
+          mkdir build
+          for i in `ls specs | sed 's/\.md$//'`
+            do
+              mmark specs/$i.md > build/$i.xml
+              xml2rfc --v3 build/$i.xml
+              xml2rfc --v3 --html build/$i.xml
+            done
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4.3.3
+        with:
+          branch: gh-pages # The branch the action should deploy to.
+          folder: build # The folder the action should deploy.
