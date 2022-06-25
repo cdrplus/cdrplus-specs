@@ -28,21 +28,23 @@ jobs:
               mkdir build/$j
               for i in `ls specs | sed 's/\.md$//'`
                 do
-                mmark specs/$i.md > build/$j/$i.xml
-                xml2rfc --v3 build/$j/$i.xml
-                xml2rfc --v3 --html build/$j/$i.xml
-            done
+                  mmark specs/$i.md > build/$j/$i.xml
+                  xml2rfc --v3 build/$j/$i.xml
+                  xml2rfc --v3 --html build/$j/$i.xml
+              done
+          done
           for j in `git tag`
             do
               git checkout $j
               mkdir build/$j
               for i in `ls specs | sed 's/\.md$//'`
                 do
-                mmark specs/$i.md > build/$j/$i.xml
-                xml2rfc --v3 build/$j/$i.xml
-                xml2rfc --v3 --html build/$j/$i.xml
-            done
+                  mmark specs/$i.md > build/$j/$i.xml
+                  xml2rfc --v3 build/$j/$i.xml
+                  xml2rfc --v3 --html build/$j/$i.xml
+                done
           done
+
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4.3.3
         with:
