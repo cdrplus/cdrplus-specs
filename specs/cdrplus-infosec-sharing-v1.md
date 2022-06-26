@@ -23,7 +23,7 @@ Describes the CDR Sharing Arrangement V1
 
 .# Notational Conventions
 
-The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED",  "MAY", and "OPTIONAL" in this document are to be interpreted as described in [@!RFC 2119].
+The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED",  "MAY", and "OPTIONAL" in this document are to be interpreted as described in [@!RFC2119].
 
 {mainmatter}
 
@@ -143,18 +143,16 @@ The authorisation server:
 7. **MUST** reject requests referencing a CDR Arrangement that does not match the authenticated Consumer;
 8. **MUST** revoke previously issued access and refresh tokens when a CDR Arrangement is updated
 
-# Data Recipient
+# Recipient
 
-TODO: Explanation about DR
-
-## Authorisation Client
-
-An authorisation client shall support the provisions specified in clause 5.2.3 and 5.2.4 of [@!FAPI-1.0-Baseline].
+A Recipient **SHALL** support the provisions specified in clause 5.2.3 and 5.2.4 of [@!FAPI-1.0-Baseline].
 
 In addition, the authorisation client
 1. If a Refresh Token is issued for one-time collection the Data Recipient Software Product MUST call the Data Holder’s revocation endpoint after successful collection of the CDR data.
 2. The Data Recipient Software Product MAY provide the cdr_arrangement_id claim in the Request Object sent to the PAR End Point.
 3. Data Recipient Software Products MAY provide an existing cdr_arrangement_id claim in an authorisation request object to establish a new consent under an existing arrangement
+4. **MUST** support the Recipient CDR Arrangement Revocation Endpoint (RCARE)
+
 
 ### Recipient CDR Arrangement Revocation Endpoint (RCARE)
 

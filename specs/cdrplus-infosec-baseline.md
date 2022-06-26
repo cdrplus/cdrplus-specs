@@ -23,7 +23,7 @@ The Consumer Data Right (CDR) Security Baseline profile is profile of the OAuth 
 
 .# Notational Conventions
 
-The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED",  "MAY", and "OPTIONAL" in this document are to be interpreted as described in [@!RFC 2119].
+The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED",  "MAY", and "OPTIONAL" in this document are to be interpreted as described in [@!RFC2119].
 
 {mainmatter}
 
@@ -56,8 +56,8 @@ In addition, the authorisation server
 2. **SHALL** support the `response_type` of `code` in conjunction with the `response_mode` value `jwt`;
 3. **SHALL NOT** accept JWT request objects passed by value (this overrides [@!FAPI-1.0-Advanced] clause 5.2.2-1);
 4. **SHALL** require signed and encrypted ID Tokens (this overrides [@!FAPI-1.0-Advanced] clause 5.2.2.1-3);
-5. **MUST** support the pushed authorisation request endpoint as described in [@!PAR] (this overrides [@!FAPI-1.0-Advanced] clause 5.2.2-11);
-6. **SHALL NOT** support JWT request object by reference except when using [@!PAR]
+5. **MUST** support the pushed authorisation request endpoint as described in [@!RFC9126] (this overrides [@!FAPI-1.0-Advanced] clause 5.2.2-11);
+6. **SHALL NOT** support JWT request object by reference except when using [@!RFC9126]
 7. **SHALL** authenticate the confidential client using `private_key_jwt` as specified in section 9 of OIDC (this overrides [@!FAPI-1.0-Advanced] clause 5.2.2-14);
 8. **SHALL NOT** return PII from the authorisation endpoint;
 9. **MUST** support the [@!OIDC-Core] scopes `openid` and `profile`;
@@ -190,3 +190,28 @@ providing or requesting additional information beyond normal data holder practic
 offering additional or alternative services
 reference or inclusion of other documents
 
+{backmatter}
+
+<reference anchor="OIDC-Core" target="http://openid.net/specs/openid-connect-core-1_0.html"> <front> <title>OpenID Connect Core 1.0 incorporating errata set 1</title> <author initials="N." surname="Sakimura" fullname="Nat Sakimura"> <organization>NRI</organization> </author> <author initials="J." surname="Bradley" fullname="John Bradley"> <organization>Ping Identity</organization> </author> <author initials="M." surname="Jones" fullname="Mike Jones"> <organization>Microsoft</organization> </author> <author initials="B." surname="de Medeiros" fullname="Breno de Medeiros"> <organization>Google</organization> </author> <author initials="C." surname="Mortimore" fullname="Chuck Mortimore"> <organization>Salesforce</organization> </author> <date day="8" month="Nov" year="2014"/> </front> </reference>
+
+<reference anchor="OIDC-Discovery" target="https://openid.net/specs/openid-connect-discovery-1_0.html"> <front> <title>OpenID Connect Discovery 1.0 incorporating errata set 1</title> <author initials="N." surname="Sakimura" fullname="Nat Sakimura"> <organization>NRI</organization> </author> <author initials="J." surname="Bradley" fullname="John Bradley"> <organization>Ping Identity</organization> </author> <author initials="M." surname="Jones" fullname="Mike Jones"> <organization>Microsoft</organization> </author> <author initials="E." surname="Jay"> <organization>Illumila</organization> </author><date day="8" month="Nov" year="2014"/> </front> </reference>
+
+<reference anchor="RFC2119" target="https://datatracker.ietf.org/doc/html/rfc2119"> <front> <title>Key words for use in RFCs to Indicate Requirement Levels</title> <author fullname="S. Bradner"> <organization>Harvard University</organization> </author> </front> </reference>
+
+<reference anchor="RFC7009" target="https://datatracker.ietf.org/doc/html/rfc7009"> <front> <title>OAuth 2.0 Token Revocation</title> <author fullname="T. Lodderstedt, Ed."> <organization>Deutsche Telekom AG</organization> </author><author fullname="M. Scurtescu"> <organization>Google</organization> </author> </front> </reference>
+
+<reference anchor="RFC7519" target="https://datatracker.ietf.org/doc/html/rfc7519"> <front> <title>JSON Web Token (JWT)</title> <author fullname="M. Jones"> <organization>Microsoft</organization> </author> <author initials="J." surname="Bradley" fullname="John Bradley"> <organization>Ping Identity</organization> </author><author fullname="N. Sakimura"> <organization>Nomura Research Institute</organization> </author> <date month="May" year="2015"/></front> </reference>
+
+<reference anchor="RFC7662" target="https://datatracker.ietf.org/doc/html/rfc7662"> <front> <title>OAuth 2.0 Token Introspection
+</title> <author fullname="J. Richer, Ed."> </author> <date month="Oct" year="2015"/></front> </reference>
+
+<reference anchor="RFC8705" target="https://datatracker.ietf.org/doc/html/rfc8705"> <front> <title>OAuth 2.0 Mutual-TLS Client Authentication and Certificate-Bound Access Tokens</title><author fullname="B. Campbell"> <organization>Ping Identity</organization> </author><author initials="J." surname="Bradley" fullname="John Bradley"> <organization>Yubico</organization> </author> <author fullname="N. Sakimura"> <organization>Nomura Research Institute</organization> </author> <author fullname="T. Lodderstedt, Ed."> <organization>YES.com AG</organization> </author><date month="Feb" year="2020"/></front> </reference>
+
+<reference anchor="RFC9126" target="https://datatracker.ietf.org/doc/html/rfc9126"> <front> <title>OAuth 2.0 Pushed Authorization Requests</title> <author fullname="T. Lodderstedt, Ed."> <organization>yes.com</organization> </author><author fullname="B. Campbell"> <organization>Ping Identity</organization> </author><author fullname="N. Sakimura"> <organization>NAT.Consulting</organization> </author> <author fullname="D. Tonge"> <organization>Moneyhub Financial Technology</organization> </author><author fullname="F. Skokan"> <organization>Auth0</organization> </author><date month="Sep" year="2021"/></front> </reference>
+
+<reference anchor="RFC8414" target="https://datatracker.ietf.org/doc/html/rfc8414"> <front> <title>OAuth 2.0 Authorization Server Metadata</title> <author initials="M." surname="Jones" fullname="Mike Jones"> <organization>Microsoft</organization> </author> <author fullname="N. Sakimura"> <organization>NAT.Consulting</organization></author> <author initials="J." surname="Bradley" fullname="John Bradley"> <organization>Yubico</organization> </author><date month="Jun" year="2018"/></front> </reference>
+
+<reference anchor="FAPI-1.0-Advanced" target="https://openid.net/specs/openid-financial-api-part-2-1_0.html"> <front> <title abbrev="FAPI 1.0 Advanced">Financial-grade API Security Profile 1.0 - Part 2: Advanced</title><author initials="N." surname="Sakimura" fullname="Nat Sakimura"><organization abbrev="Nat Consulting">Nat Consulting</organization><address><postal><street></street></postal><email>nat@nat.consulting</email><uri>http://nat.sakimura.org/</uri> </address></author><author initials="J." surname="Bradley" fullname="John Bradley"><organization abbrev="Yubico">Yubico</organization><address><postal><street></street> </postal><email>ve7jtb@ve7jtb.com</email> <uri>http://www.thread-safe.com/</uri> </address></author> <author initials="E." surname="Jay" fullname="Illumila"><organization abbrev="Illumila">Illumila</organization><address><postal><street></street> </postal><email>ejay@mgi1.com</email> <uri>http://illumi.la/</uri></address></author></front> </reference>
+
+
+<reference anchor="FAPI-1.0-Baseline" target="https://openid.net/specs/openid-financial-api-part-1-1_0.html"> <front><title abbrev="FAPI 1.0 Baseline">Financial-grade API Security Profile 1.0 - Part 1: Baseline</title><author initials="N." surname="Sakimura" fullname="Nat Sakimura"><organization abbrev="Nat Consulting">Nat Consulting</organization><address><postal><street></street> </postal><email>nat@nat.consulting</email> <uri>http://nat.sakimura.org/</uri> </address></author><author initials="J." surname="Bradley" fullname="John Bradley"><organization abbrev="Yubico">Yubico</organization><address><postal><street></street></postal><email>ve7jtb@ve7jtb.com</email><uri>http://www.thread-safe.com/</uri></address></author><author initials="E." surname="Jay" fullname="Illumila"><organization abbrev="Illumila">Illumila</organization><address><postal><street></street></postal><email>ejay@mgi1.com</email><uri>http://illumi.la/</uri></address></author></front> </reference>
