@@ -5,8 +5,8 @@ workgroup = "cdrplus-core"
 
 [seriesInfo]
 name = "Internet-Draft"
-value = "cdrplus-security-baseline-00"
-stream = "independent"
+value = "cdrplus-infosec-baseline-00"
+stream = "IETF"
 status = "experimental"
 
 date = 2022-06-27T00:00:00Z
