@@ -218,4 +218,5 @@ reference or inclusion of other documents
 
 <reference anchor="CDRPLUS-INFOSEC-SHARING-V1" target="https://cdrplus.github.io/cdrplus-specs/cdrplus-infosec-sharing-v1.html"> <front><title>CDR: Sharing Arrangement V1</title><author initials="S." surname="Low" fullname="Stuart Low"><organization>Biza.io</organization></author></front> </reference>
 
-<reference anchor="TDIF" target="https://www.digitalidentity.gov.au"><front><title>Trusted Digital Identity Framework (TDIF)</title></front> </reference>
+<reference anchor="TDIF" target="https://www.digitalidentity.gov.au"><front><title>Trusted Digital Identity Framework (TDIF)</title><author><organization>Commonwealth of
+Australia (Digital Transformation Agency)</organization></author></front> </reference>
