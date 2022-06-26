@@ -120,9 +120,9 @@ In addition, the revocation endpoint:
 ### Request Object
 
 The request object submitted to the authorisation server:
-1. **MUST** contain a `exp` claim, in accordance with [@!RFC7519] Section 4.1.4
+1. **MUST** contain a `exp` claim, in accordance with [@!JWT] Section 4.1.4
 2. **MUST** ensure the `exp` claim is less than or equal to `3600`
-3. **MUST** contain a `nbf` claim in accordance with [@!RFC7519] Section 4.1.5
+3. **MUST** contain a `nbf` claim in accordance with [@!JWT] Section 4.1.5
 
 ### Claims
 
@@ -200,7 +200,7 @@ reference or inclusion of other documents
 
 <reference anchor="RFC7009" target="https://datatracker.ietf.org/doc/html/rfc7009"> <front> <title>OAuth 2.0 Token Revocation</title> <author fullname="T. Lodderstedt, Ed."> <organization>Deutsche Telekom AG</organization> </author><author fullname="M. Scurtescu"> <organization>Google</organization> </author> </front> </reference>
 
-<reference anchor="RFC7519" target="https://datatracker.ietf.org/doc/html/rfc7519"> <front> <title>JSON Web Token (JWT)</title> <author fullname="M. Jones"> <organization>Microsoft</organization> </author> <author initials="J." surname="Bradley" fullname="John Bradley"> <organization>Ping Identity</organization> </author><author fullname="N. Sakimura"> <organization>Nomura Research Institute</organization> </author> <date month="May" year="2015"/></front> </reference>
+<reference anchor="JWT" target="https://datatracker.ietf.org/doc/html/rfc7519"> <front> <title>JSON Web Token (JWT)</title> <author fullname="M. Jones"> <organization>Microsoft</organization> </author> <author initials="J." surname="Bradley" fullname="John Bradley"> <organization>Ping Identity</organization> </author><author fullname="N. Sakimura"> <organization>Nomura Research Institute</organization> </author> <date month="May" year="2015"/></front> </reference>
 
 <reference anchor="RFC7662" target="https://datatracker.ietf.org/doc/html/rfc7662"> <front> <title>OAuth 2.0 Token Introspection
 </title> <author fullname="J. Richer, Ed."> </author> <date month="Oct" year="2015"/></front> </reference>

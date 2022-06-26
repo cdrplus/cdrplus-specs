@@ -154,11 +154,11 @@ In addition, the authorisation client
 4. **MUST** support the Recipient CDR Arrangement Revocation Endpoint (RCARE)
 
 
-### Recipient CDR Arrangement Revocation Endpoint (RCARE)
+## Recipient CDR Arrangement Revocation Endpoint (RCARE)
 
 The Recipient CDR Arrangement (RCARE) Revocation endpoint is a CDR specific endpoint that accepts a CDR Arrangement Identifier and immediately revokes the CDR Sharing Arrangement.
 
-#### RCARE Request
+### RCARE Request
 
 The protected resource calls the RCARE endpoint using an HTTP POST [@!RFC7231] request with parameters sent as "application/x-www-form-urlencoded" data as defined in [@!W3C.REC-html5-20141028].  The protected resource sends a parameter representing the CDR Arrangement Identifier.
 
@@ -197,11 +197,11 @@ The Recipient first validates the Holder credentials and then verifies whether t
 
 In the next step, the Recipient invalidates the CDR Arrangement and **SHOULD** discard associated tokens. Data Minimisation events **SHOULD** also be triggered on receipt of this event.
 
-#### RCARE Response
+### RCARE Response
 
 The RCARE endpoint **MUST** respond with HTTP status code 204 if the CDR Sharing Arrangement has been revoked successfully. If the CDR Sharing Arrangement was already revoked (but is otherwise valid) the authorisation server **SHOULD** respond with a successful response.
 
-##### Error Response
+#### Error Response
 
 The error presentation conforms to the definition in Section X.X of [@!CDRPLUS-BASELINE-ERRORS].
 
@@ -210,3 +210,15 @@ The following additional error code is defined for the HCARE endpoint:
 `urn:au-cds:error:cds-all:Authorisation/InvalidArrangement`: The CDR Arrangement Identifier could not be found. The error detail is the CDR Arrangement ID of the being executed.
 
 If the server responds with HTTP status code 503, the client must assume the CDR Arrangement still exists and may retry after a reasonable delay. The server may include a "Retry-After" header in the response to indicate how long the service is expected to be unavailable to the requesting client.
+
+{backmatter}
+
+<reference anchor="OIDC-Discovery" target="https://openid.net/specs/openid-connect-discovery-1_0.html"> <front> <title>OpenID Connect Discovery 1.0 incorporating errata set 1</title> <author initials="N." surname="Sakimura" fullname="Nat Sakimura"> <organization>NRI</organization> </author> <author initials="J." surname="Bradley" fullname="John Bradley"> <organization>Ping Identity</organization> </author> <author initials="M." surname="Jones" fullname="Mike Jones"> <organization>Microsoft</organization> </author> <author initials="E." surname="Jay"> <organization>Illumila</organization> </author><date day="8" month="Nov" year="2014"/> </front> </reference>
+
+<reference anchor="JWT" target="https://datatracker.ietf.org/doc/html/rfc7519"> <front> <title>JSON Web Token (JWT)</title> <author fullname="M. Jones"> <organization>Microsoft</organization> </author> <author initials="J." surname="Bradley" fullname="John Bradley"> <organization>Ping Identity</organization> </author><author fullname="N. Sakimura"> <organization>Nomura Research Institute</organization> </author> <date month="May" year="2015"/></front> </reference>
+
+<reference anchor="CDRPLUS-BASELINE-ERRORS" target="https://cdrplus.github.io/cdrplus-specs/cdrplus-baseline-errors.html"> <front><title>CDR: Enhanced Error Baseline</title><author initials="S." surname="Low" fullname="Stuart Low"><organization>Biza.io</organization></author></front> </reference>
+
+<reference anchor="CDRPLUS-ADMISSION-CONTROL" target="https://cdrplus.github.io/cdrplus-specs/cdrplus-admission-control.html"> <front><title>CDR: Admission Control</title><author initials="S." surname="Low" fullname="Stuart Low"><organization>Biza.io</organization></author></front> </reference>
+
+<reference anchor="FAPI-1.0-Baseline" target="https://openid.net/specs/openid-financial-api-part-1-1_0.html"> <front><title abbrev="FAPI 1.0 Baseline">Financial-grade API Security Profile 1.0 - Part 1: Baseline</title><author initials="N." surname="Sakimura" fullname="Nat Sakimura"><organization>Nat Consulting</organization></author><author initials="J." surname="Bradley" fullname="John Bradley"><organization>Yubico</organization></author><author initials="E." surname="Jay" fullname="Illumila"><organization>Illumila</organization></author></front> </reference>
