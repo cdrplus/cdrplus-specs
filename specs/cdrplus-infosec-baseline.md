@@ -140,6 +140,7 @@ The authorisation server:
 ### Authentication Context Class References (ACR)
 
 The authorisation server **SHALL** support the following ACR values:
+
 1. `urn:cds.au:cdr:2` where the authentication achieved matches the Credential Level `CL1` rules of [@!TDIF];
 2. `urn:cds.au:cdr:3` where the authentication achieved matches the Credential Level `CL2` rules of [@!TDIF]
 
@@ -150,6 +151,7 @@ Additionally, the authorisation server **MUST** ensure all operations meet the r
 The resource server shall support the provisions specified in clause 5.2.2 of [@!FAPI-1.0-Baseline].
 
 In addition, the resource server:
+
 1. **SHALL** provide identifiers which are unique per Software Product
 
 # Data Recipient
@@ -161,11 +163,13 @@ TODO: Explanation about DR
 An authorisation client shall support the provisions specified in clause 5.2.3 and 5.2.4 of [@!FAPI-1.0-Baseline].
 
 In addition, the authorisation client
+
 1. Data Recipient Software Products MUST ONLY use a "request_uri" value once
 
 # Supported Arrangement Types
 
 Data Holders and Data Recipients **MUST** support the following:
+
 1. CDR Sharing Arrangement V1 as described in [@!CDRPLUS-INFOSEC-SHARING-V1]
 
 # TLS Considerations

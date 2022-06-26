@@ -49,6 +49,7 @@ TODO: Explanation about DH
 ## Authorisation Server
 
 The authorisation server:
+
 1. **SHALL** issue refresh tokens with an expiry matched to the CDR Arrangement;
 2. **SHALL NOT** issue refresh tokens for a missing `sharing_duration` or a `sharing_duration` with a value of `0` (see Request Object);
 3. **MUST** support the Holder CDR Arrangement Revocation Endpoint (HCARE)
@@ -110,6 +111,7 @@ The authorisation server SHALL support discovery, as defined in OpenID Connect D
 Additionally, the authorisation server SHOULD support discovery, as defined in [@!RFC8414].
 
 In addition, the authorisation server
+
 1. **MUST** support the `require_pushed_authorization_requests` parameter as described in [@!RFC9126] at the OpenID Connect Discovery 1.0 [@!OIDC-Discovery] endpoint
 2. **MUST** support the `require_pushed_authorization_requests` parameter as described in [@!RFC9126] at the [@!RFC8414] endpoint
 3. **SHOULD** advertise the `require_pushed_authorization_requests` as `true`
@@ -118,6 +120,7 @@ In addition, the authorisation server
 ### Request Object
 
 The request object submitted to the authorisation server:
+
 1. **MUST** support a claim parameter of `sharing_duration` representing the number of seconds, as an integer, to request a CDR Sharing Arrangement;
 2. **MUST** consider `sharing_duration` lengths exceeding `31536000` to be equal to `31536000`;
 3. **SHOULD** reject `sharing_duration` values less than `0`;
@@ -127,6 +130,7 @@ The request object submitted to the authorisation server:
 ### Claims
 
 The authorisation server:
+
 1. **MUST** support the claim `refresh_token_expires_at` representing the expiry of the refresh token as a numeric epoch. If no refresh token has been provided a `0` **SHOULD** be returned;
 2. **MUST** support the claim `sharing_expires_at` representing the expiry of the CDR Arrangement. If a `sharing_duration` was not specified in the authorisation request object then a `0` **SHOULD** be returned;
 3. **SHOULD** ensure the `exp` claim within refresh tokens is equal to the `sharing_expires_at` claim;
@@ -134,6 +138,7 @@ The authorisation server:
 #### CDR Arrangement Identifier
 
 The authorisation server:
+
 1. **MUST** support the claim `cdr_arrangement_id` representing a unique identifier for the CDR Arrangement;
 2. **MUST** ensure the `cdr_arrangement_id` is non-guessable;
 3. **MUST** ensure the `cdr_arrangement_id` does not identify the Consumer;
@@ -148,6 +153,7 @@ The authorisation server:
 A Recipient **SHALL** support the provisions specified in clause 5.2.3 and 5.2.4 of [@!FAPI-1.0-Baseline].
 
 In addition, the authorisation client
+
 1. If a Refresh Token is issued for one-time collection the Data Recipient Software Product MUST call the Data Holder’s revocation endpoint after successful collection of the CDR data.
 2. The Data Recipient Software Product MAY provide the cdr_arrangement_id claim in the Request Object sent to the PAR End Point.
 3. Data Recipient Software Products MAY provide an existing cdr_arrangement_id claim in an authorisation request object to establish a new consent under an existing arrangement
@@ -167,6 +173,7 @@ The protected resource calls the RCARE endpoint using an HTTP POST [@!RFC7231] r
 
 `cdr_arrangement_jwt`
 **REQUIRED**. A single signed [@!JWT] containing the following parameters:
+
 1. `cdr_arrangement_id` representing the CDR Arrangement Identifier previously provided in the token and introspection endpoint responses;
 2. `iss`: The Holder Brand ID as per Section X.X in [@!CDRPLUS-ADMISSION-CONTROL]
 3. `sub`: The Holder Brand ID as per Section X.X in [@!CDRPLUS-ADMISSION-CONTROL]
@@ -175,6 +182,7 @@ The protected resource calls the RCARE endpoint using an HTTP POST [@!RFC7231] r
 6. `exp`: Expiration time on or after the JWT must not be accepted
 
 In addition, the client includes an `Authorization` header parameter with a Bearer token containing a single signed [@!JWT] with the following parameters:
+
 1. `iss`: The Holder Brand ID as per Section X.X in [@!CDRPLUS-ADMISSION-CONTROL]
 2. `sub`: The Holder Brand ID as per Section X.X in [@!CDRPLUS-ADMISSION-CONTROL]
 3. `aud`: The URI to the RCARE Endpoint as per Section X.X in [@!CDRPLUS-ADMISSION-CONTROL]
