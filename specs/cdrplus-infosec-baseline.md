@@ -23,7 +23,7 @@ The Consumer Data Right (CDR) Security Baseline profile is profile of the OAuth 
 
 .# Notational Conventions
 
-The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED",  "MAY", and "OPTIONAL" in this document are to be interpreted as described in [@!RFC2119].
+The key words "**MUST**", "**MUST NOT**", "**REQUIRED**", "**SHALL**", "**SHALL NOT**", "**SHOULD**", "**SHOULD NOT**", "**RECOMMENDED**",  "**MAY**", and "**OPTIONAL**" in this document are to be interpreted as described in [@!RFC2119].
 
 {mainmatter}
 
@@ -61,19 +61,19 @@ In addition, the authorisation server
 7. **SHALL** authenticate the confidential client using `private_key_jwt` as specified in section 9 of OIDC (this overrides [@!FAPI-1.0-Advanced] clause 5.2.2-14);
 8. **SHALL NOT** return PII from the authorisation endpoint;
 9. **MUST** support the [@!OIDC-Core] scopes `openid` and `profile`;
-10. **MUST** support the [@!OIDC-Core] claims `openid` and `profile`;
-11. **SHALL** issue access tokens with a minimum of 2 and a maximum of 10 minute expiry times;
-12. **SHALL** provide the lifetime of an access token as an attribute named `expires_in` within the token endpoint response;
-13. **MUST** generate the `sub` as a PPID as described in Section 8 of [@!OIDC-Core];
-14. **SHALL** issue `request_uri` values which expire between 10 seconds and 90 seconds;
-15. **SHALL** issue `request_uri` which can only be used once;
-16. **MUST NOT** specify duplicate `kid` parameters within the endpoint advertised at `jwks_uri`;
-17. **MUST** support a Token End Point as specified in Section 3.1.3 of [@!OIDC-Core];
-18. **MUST** support a UserInfo Endpoint as specified in Section 5.3 of [@!OIDC-Core];
+10. **SHALL** issue access tokens with a minimum of 2 and a maximum of 10 minute expiry times;
+11. **SHALL** provide the lifetime of an access token as an attribute named `expires_in` within the token endpoint response;
+12. **MUST** generate the `sub` as a PPID as described in Section 8 of [@!OIDC-Core];
+13. **SHALL** issue `request_uri` values which expire between 10 seconds and 90 seconds;
+14. **SHALL** issue `request_uri` which can only be used once;
+15. **MUST NOT** specify duplicate `kid` parameters within the endpoint advertised at `jwks_uri`;
+16. **MUST** support a Token End Point as specified in Section 3.1.3 of [@!OIDC-Core];
+17. **MUST** support a UserInfo Endpoint as specified in Section 5.3 of [@!OIDC-Core];
 
 ### Authorisation Flow
 
 During the authorisation flow, the authorisation server:
+
 1. **MUST** request a user identifier that can uniquely identify the Consumer and that is already known by the Consumer;
 2. **MUST** use a one-time password (OTP) provided to the Consumer through an existing channel or mechanism;
 3. **MUST NOT** introduce unwarranted friction into the authentication process
@@ -81,6 +81,7 @@ During the authorisation flow, the authorisation server:
 #### One-Time Password (OTP)
 
 The One-Time Password (OTP):
+
 1. **MUST** be delivered using existing and preferred channels
 2. **MUST** be numeric digits and be between 4 and 6 digits in length
 3. **MUST** only be valid for CDR authentication purposes
@@ -95,7 +96,8 @@ The authorisation server SHALL support discovery, as defined in OpenID Connect D
 
 Additionally, the authorisation server SHOULD support discovery, as defined in [@!RFC8414].
 
-In addition, the authorisation server
+In addition, the authorisation server:
+
 1. **MUST** support the `require_pushed_authorization_requests` parameter as described in [@!RFC9126] at the OpenID Connect Discovery 1.0 [@!OIDC-Discovery] endpoint
 2. **MUST** support the `require_pushed_authorization_requests` parameter as described in [@!RFC9126] at the [@!RFC8414] endpoint
 3. **SHOULD** advertise the `require_pushed_authorization_requests` as `true`
@@ -105,6 +107,7 @@ In addition, the authorisation server
 The authorisation server SHALL support an introspection endpoint, as defined in [@!RFC7662].
 
 In addition, the introspection endpoint response:
+
 1. **MUST** include the `exp` attribute
 2. **MUST** include the `scope` attribute
 3. **MUST NOT** include the `username` attribute
@@ -114,12 +117,14 @@ In addition, the introspection endpoint response:
 The authorisation server SHALL support an OAuth2 revocation endpoint, as defined in [@!RFC7009].
 
 In addition, the revocation endpoint:
+
 1. **MUST** support revocation of Refresh Tokens
 2. **MUST** support revocation of Access Tokens
 
 ### Request Object
 
 The request object submitted to the authorisation server:
+
 1. **MUST** contain a `exp` claim, in accordance with [@!JWT] Section 4.1.4
 2. **MUST** ensure the `exp` claim is less than or equal to `3600`
 3. **MUST** contain a `nbf` claim in accordance with [@!JWT] Section 4.1.5
@@ -127,6 +132,7 @@ The request object submitted to the authorisation server:
 ### Claims
 
 The authorisation server:
+
 1. **MUST** support the [@!OIDC-Core] claims of `sub`, `acr`, `auth_time`, `name`, `given_name` `family_name` and `last_updated`;
 2. **MAY** support the [@!OIDC-Core] claims of `email`, `email_verified`, `phone_number` and `phone_number_verified`;
 3. **MUST NOT** support any other claims outlined in [@!OIDC-Core];
@@ -167,11 +173,12 @@ Data Holders and Data Recipients **MUST** support the following:
 Section 8.5 of [@!FAPI-1.0-Advanced] **SHALL** apply.
 
 In addition:
+
 1. Use of TLS 1.2 or higher is **REQUIRED**
-3. Use of Mutual TLS is **REQUIRED** at all Authenticated Resource Server endpoints
-4. Use of Mutual TLS is **REQUIRED** at all OAuth2 endpoints except where required for Discovery or Consumer browser access (ie. Authorisation endpoint)
-5. All parties **SHALL** utilise certificates issued by the Ecosystem Authority
-6. All sender constrained tokens **SHALL** be issued in accordance with [@!RFC8705] Part 3
+2. Use of Mutual TLS is **REQUIRED** at all Authenticated Resource Server endpoints
+3. Use of Mutual TLS is **REQUIRED** at all OAuth2 endpoints except where required for Discovery or Consumer browser access (ie. Authorisation endpoint)
+4. All parties **SHALL** utilise certificates issued by the Ecosystem Authority
+5. All sender constrained tokens **SHALL** be issued in accordance with [@!RFC8705] Part 3
 
 # Implementation Considerations
 
@@ -216,7 +223,7 @@ reference or inclusion of other documents
 
 <reference anchor="FAPI-1.0-Baseline" target="https://openid.net/specs/openid-financial-api-part-1-1_0.html"> <front><title abbrev="FAPI 1.0 Baseline">Financial-grade API Security Profile 1.0 - Part 1: Baseline</title><author initials="N." surname="Sakimura" fullname="Nat Sakimura"><organization>Nat Consulting</organization></author><author initials="J." surname="Bradley" fullname="John Bradley"><organization>Yubico</organization></author><author initials="E." surname="Jay" fullname="Illumila"><organization>Illumila</organization></author></front> </reference>
 
-<reference anchor="CDRPLUS-INFOSEC-SHARING-V1" target="https://cdrplus.github.io/cdrplus-specs/cdrplus-infosec-sharing-v1.html"> <front><title>CDR: Sharing Arrangement V1</title><author initials="S." surname="Low" fullname="Stuart Low"><organization>Biza.io</organization></author></front> </reference>
+<reference anchor="CDRPLUS-INFOSEC-SHARING-V1" target="https://cdrplus.github.io/cdrplus-specs/main/cdrplus-infosec-sharing-v1.html"> <front><title>CDR: Sharing Arrangement V1</title><author initials="S." surname="Low" fullname="Stuart Low"><organization>Biza.io</organization></author></front> </reference>
 
 <reference anchor="TDIF" target="https://www.digitalidentity.gov.au"><front><title>Trusted Digital Identity Framework (TDIF)</title><author><organization>Commonwealth of
 Australia (Digital Transformation Agency)</organization></author></front> </reference>
