@@ -1,6 +1,6 @@
 #!/bin/bash
 
-REPOS="cdrplus-infosec-baseline cdrplus-sharing-arrangement-v1"
+REPOS="cdrplus-infosec-baseline cdrplus-sharing-arrangement-v1 cdrplus-admission-control cdrplus-enhanced-errors"
 
 [ ! -d "specs" ] && mkdir specs
 
